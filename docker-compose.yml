@@ -12,8 +12,8 @@ services:
       - etc_wireguard:/etc/wireguard
       - /lib/modules:/lib/modules:ro
     environment:
-      # - WG_HOST=deine.domain.de         # <== deine öffentliche IP oder Domain
-      # - PASSWORD=deinSicheresPasswort   # <== Admin-Webinterface Passwort
+      # - WG_HOST=deine.domain.de          <== deine öffentliche IP oder Domain
+      # - PASSWORD=deinSicheresPasswort    <== Admin-Webinterface Passwort
       # Optional:
       # - WG_PORT=51820
       # - UI_TRAFFIC_STATS=true
