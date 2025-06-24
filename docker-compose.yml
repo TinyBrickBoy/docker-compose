@@ -1,22 +1,16 @@
 version: "3.8"
 
-volumes:
-  etc_wireguard:
-
 services:
   wg-easy:
     image: ghcr.io/wg-easy/wg-easy:15
     container_name: wg-easy
-    network_mode: "host"  # Host-Modus für funktionierendes UDP/VPN
+    network_mode: "host"  # <<<<< WICHTIG
     volumes:
       - etc_wireguard:/etc/wireguard
       - /lib/modules:/lib/modules:ro
     environment:
-      # - WG_HOST=deine.domain.de          <== deine öffentliche IP oder Domain
-      # - PASSWORD=deinSicheresPasswort    <== Admin-Webinterface Passwort
-      # Optional:
-      # - WG_PORT=51820
-      # - UI_TRAFFIC_STATS=true
+      - WG_HOST=deine.domain.de  # oder deine öffentliche IP
+      - PASSWORD=deinpasswort
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
@@ -27,3 +21,6 @@ services:
       - net.ipv6.conf.all.disable_ipv6=0
       - net.ipv6.conf.all.forwarding=1
       - net.ipv6.conf.default.forwarding=1
+
+volumes:
+  etc_wireguard:
